@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 txingxie
+Copyright (c) 2024 Cura - AI-Powered Counselor Guidance Platform
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+DISCLAIMER FOR MENTAL HEALTH APPLICATION:
+
+This software is designed to assist mental health professionals with clinical 
+decision support and is not intended to replace professional clinical judgment, 
+diagnosis, or treatment. Users must:
+
+1. Always prioritize their professional clinical expertise and ethical guidelines
+2. Ensure compliance with all applicable laws and regulations (HIPAA, etc.)
+3. Obtain proper informed consent when using AI-assisted tools with clients
+4. Maintain appropriate boundaries and confidentiality standards
+5. Use this tool as a supplementary resource, not a primary decision-maker
+
+The developers disclaim all liability for clinical decisions made using this 
+software. Mental health professionals are solely responsible for their clinical 
+practice and patient care decisions.

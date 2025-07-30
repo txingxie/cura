@@ -1,0 +1,343 @@
+# ==============================================
+# CURA PROJECT GITIGNORE
+# AI-Powered Counselor Guidance Platform
+# ==============================================
+
+# ==============================================
+# ENVIRONMENT & SECRETS
+# ==============================================
+# Never commit environment files with secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# Backend environment files
+backend/.env*
+backend/.env
+
+# ==============================================
+# NODE.JS & REACT FRONTEND
+# ==============================================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production builds
+frontend/build/
+frontend/dist/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# ==============================================
+# PYTHON & FASTAPI BACKEND
+# ==============================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+backend/venv/
+backend/env/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# ==============================================
+# MACHINE LEARNING & DATA
+# ==============================================
+# Large model files (use Git LFS for these)
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.model
+*.bin
+
+# Dataset files (typically too large for git)
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.xlsx
+data/raw/*.tsv
+
+# Processed data that can be regenerated
+data/processed/embeddings.npy
+data/processed/vectors/
+data/cache/
+
+# ML experiment tracking
+mlruns/
+.mlflow/
+wandb/
+
+# Model checkpoints
+checkpoints/
+logs/
+models/*.pkl
+models/*.joblib
+
+# ==============================================
+# DATABASE
+# ==============================================
+# Local SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps
+*.sql.gz
+*.dump
+
+# ==============================================
+# DOCKER & CONTAINERS
+# ==============================================
+# Docker volumes and data
+docker-compose.override.yml
+.docker/
+
+# ==============================================
+# IDE & EDITOR FILES
+# ==============================================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*~
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==============================================
+# OPERATING SYSTEM FILES
+# ==============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==============================================
+# LOGS & MONITORING
+# ==============================================
+# Application logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime logs
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Sentry
+.sentryclirc
+
+# ==============================================
+# TEMPORARY & CACHE FILES
+# ==============================================
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# ==============================================
+# DOCUMENTATION BUILDS
+# ==============================================
+# Sphinx documentation
+docs/_build/
+docs/build/
+
+# ==============================================
+# DEPLOYMENT & CI/CD
+# ==============================================
+# Deployment artifacts
+deploy/
+deployment/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ==============================================
+# SECURITY & CERTIFICATES
+# ==============================================
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# ==============================================
+# CUSTOM PROJECT EXCLUDES
+# ==============================================
+# Supabase CLI
+.supabase/
+
+# Custom scripts that might contain secrets
+scripts/deploy-*
+scripts/production-*
+
+# Backup files
+*.backup
+*.bak
+
+# ==============================================
+# KEEP THESE FILES (FORCE INCLUDE)
+# ==============================================
+# Include important config templates
+!env.template
+!config/*.env
+!config/*.template
+!backend/config_template.txt
+
+# Include empty directories with .gitkeep
+!.gitkeep 
