@@ -1,0 +1,48 @@
+# Cura Backend Environment Configuration Template
+# Copy these variables to a .env file in the backend directory
+
+# ======================
+# Database Configuration (Supabase)
+# ======================
+SUPABASE_URL=https://jrxnflbmzkvfikpijndo.supabase.co
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeG5mbGJtemt2ZmlrcGlqbmRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4MzQ2MzgsImV4cCI6MjA2OTQxMDYzOH0.RIXucw1FJJJyCCk0ShF8e8jmnbXFGsm6V1KMJI-yvTg
+DATABASE_URL=postgresql://postgres:password@db.your-project.supabase.co:5432/postgres
+
+# ======================
+# OpenAI Configuration
+# ======================
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-3.5-turbo
+
+# ======================
+# ML Model Configuration  
+# ======================
+MODEL_PATH=./models
+EMBEDDINGS_MODEL=sentence-transformers/all-MiniLM-L6-v2
+
+# ======================
+# API Configuration
+# ======================
+DEBUG=false
+CORS_ORIGINS=["http://localhost:3000"]
+
+# ======================
+# Rate Limiting
+# ======================
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_WINDOW=3600
+
+# ======================
+# Development Settings
+# ======================
+# Set to true for development mode
+DEBUG=true
+
+# ======================
+# Setup Instructions
+# ======================
+# 1. Create a new Supabase project at https://supabase.com
+# 2. Get your project URL and anon key from Settings > API
+# 3. Copy this file to .env and fill in your actual values
+# 4. Run: python database/init_db.py to see schema SQL
+# 5. Execute the schema SQL in your Supabase SQL editor 

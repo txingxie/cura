@@ -1,0 +1,42 @@
+# Virtual environments
+venv
+env
+.env
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Development files
+.pytest_cache
+.coverage
+htmlcov
+.tox
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Logs
+*.log
+logs
+
+# Database files (use external database)
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp
+temp
+.tmp 
