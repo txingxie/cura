@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # React Frontend Service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for hot reload
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/tailwind.config.js:/app/tailwind.config.js
+      - ./frontend/postcss.config.js:/app/postcss.config.js
+      # Exclude node_modules from mount
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - CHOKIDAR_USEPOLLING=true  # For hot reload on some systems
+    depends_on:
+      - backend
+    networks:
+      - cura-network
+
+  # FastAPI Backend Service  
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount source code for hot reload
+      - ./backend:/app
+      # Exclude virtual environment from mount
+      - /app/venv
+    environment:
+      # Load from .env file
+      - DEBUG=true
+      - CORS_ORIGINS=["http://localhost:3000"]
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+    networks:
+      - cura-network
+
+  # PostgreSQL Database (Development only - use Supabase for production)
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432" 
+    environment:
+      - POSTGRES_DB=cura_dev
+      - POSTGRES_USER=postgres  
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cura-network
+
+  # Adminer for database management (optional)
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - cura-network
+
+# Named volumes
+volumes:
+  postgres_data:
+
+# Networks
+networks:
+  cura-network:
+    driver: bridge
+
+# Development commands
+# To start: docker-compose up
+# To start in background: docker-compose up -d
+# To rebuild: docker-compose up --build
+# To stop: docker-compose down
+# To clean up: docker-compose down -v --remove-orphans 

@@ -11,7 +11,7 @@ DATABASE_URL=postgresql://postgres:password@db.your-project.supabase.co:5432/pos
 # ======================
 # OpenAI Configuration
 # ======================
-OPENAI_API_KEY=...
+OPENAI_API_KEY=your-openai-key-here
 OPENAI_MODEL=gpt-3.5-turbo
 
 # ======================
@@ -45,4 +45,4 @@ DEBUG=true
 # 2. Get your project URL and anon key from Settings > API
 # 3. Copy this file to .env and fill in your actual values
 # 4. Run: python database/init_db.py to see schema SQL
-# 5. Execute the schema SQL in your Supabase SQL editor 
+# 5. Execute the schema SQL in your Supabase SQL editor
