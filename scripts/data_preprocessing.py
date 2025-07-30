@@ -376,7 +376,7 @@ def main():
         logger.info("=" * 60)
         
         # Print final statistics
-        print(f"\n📊 PROCESSING RESULTS:")
+        print(f"\nPROCESSING RESULTS:")
         print(f"{'Split':<12} {'Count':<8} {'Avg Context':<12} {'Avg Response':<12}")
         print("-" * 50)
         
@@ -386,7 +386,7 @@ def main():
                 avg_response = df['response_length'].mean()
                 print(f"{split_name.capitalize():<12} {len(df):<8} {avg_context:<12.0f} {avg_response:<12.0f}")
         
-        print(f"\n✅ All processed datasets saved to: data/processed/")
+        print(f"\nAll processed datasets saved to: data/processed/")
         
     except Exception as e:
         logger.error(f"Preprocessing failed: {e}")
