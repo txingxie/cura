@@ -1,40 +1,15 @@
-# Cura - AI-Powered Counselor Guidance Platform
+# Cura - AI-Powered Therapeutic Guidance Platform
 
-**An intelligent co-pilot for mental health counselors providing data-backed insights and therapeutic recommendations.**
+A proof-of-concept web application that provides mental health counselors with AI-powered therapeutic guidance through a three-layer intelligent response system.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-green.svg)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-Database-green.svg)](https://supabase.com/)
+## Overview
 
-## 🎯 Overview
+Cura assists counselors by providing:
+1. **Semantic Search** - Relevant examples from real counseling transcripts
+2. **ML Classification** - Predicted therapeutic intervention categories with confidence scoring
+3. **LLM Advice** - Generated therapeutic recommendations and next steps
 
-Cura assists mental health counselors when they face challenging patient scenarios by providing a **three-layered intelligent response system**:
-
-1. **📋 Similar Cases** - Relevant examples from real counseling transcripts using semantic search
-2. **🤖 ML Insights** - Predicted therapeutic intervention category with confidence scoring  
-3. **💡 LLM Advice** - Generated therapeutic recommendations and next steps
-
-### The Problem
-Mental health counselors face nuanced, high-pressure decisions when determining how to best support their patients. They need quick access to evidence-based insights and therapeutic strategies.
-
-### The Solution
-Cura acts as an intelligent co-pilot, combining machine learning, semantic search, and large language models to provide contextual guidance based on real counseling data and evidence-based therapeutic frameworks.
-
-## 🏗️ Architecture
-
-### System Overview
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   React Web    │    │   FastAPI       │    │   Supabase     │
-│   Frontend      │◄──►│   Backend       │◄──►│   Database     │
-│                 │    │                  │    │                 │
-│ • Input Forms   │    │ • API Routes     │    │ • Conversations │
-│ • Response UI   │    │ • ML Models      │    │ • Embeddings    │
-│ • State Mgmt    │    │ • LLM Service    │    │ • Vector Search │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-```
+## Architecture
 
 ### Three-Layer AI Pipeline
 ```
@@ -64,327 +39,208 @@ Patient Scenario Input
 Comprehensive Response Display
 ```
 
-## ✨ Features
-
-### Core Functionality
-- 🔍 **Semantic Search** - Find similar counseling scenarios from real transcript data
-- 🎯 **ML Classification** - Predict optimal therapeutic intervention approach
-- 🧠 **LLM Integration** - Generate contextual therapeutic advice
-- 📊 **Confidence Scoring** - Transparent AI predictions with uncertainty quantification
-- 📱 **Responsive Design** - Professional interface optimized for counselor workflows
-
-### Therapeutic Intervention Categories
-Based on the MULTI-30 evidence-based framework:
-1. **Validation & Empathy** - Emotional support and understanding
-2. **Cognitive Restructuring** - Challenge negative thought patterns (CBT)
-3. **Behavioral Activation** - Encourage activity and engagement
-4. **Mindfulness/Grounding** - Present-moment awareness techniques
-5. **Problem-Solving** - Practical steps and action planning
-6. **Psychoeducation** - Teaching coping skills and understanding
-
-### Technical Features
-- 🔐 **Secure Configuration** - Environment-based settings management
-- 🚀 **Fast Performance** - <3 second response times
-- 🔄 **Real-time Updates** - Live API integration
-- 🧪 **Testing Coverage** - Comprehensive unit and integration tests
-- 📖 **API Documentation** - Auto-generated OpenAPI/Swagger docs
-- 🐳 **Docker Support** - Containerized development environment
-
-## 🛠️ Technology Stack
+## Stack
 
 ### Frontend
-- **React 18** with TypeScript for type safety
-- **Tailwind CSS** for professional, responsive design
-- **Axios** for API communication
-- **React Hooks** for state management
+- React 18 with TypeScript
+- Tailwind CSS for styling
+- Axios for API communication
 
 ### Backend
-- **FastAPI** for high-performance Python web framework
-- **Pydantic** for data validation and settings management
-- **Uvicorn** for ASGI server
-- **Sentence Transformers** for semantic embeddings
-- **OpenAI API** for therapeutic advice generation
-- **Scikit-learn** for ML model training and inference
+- FastAPI for Python web framework
+- Sentence Transformers for semantic embeddings
+- OpenAI API for therapeutic advice generation
 
 ### Database & Infrastructure
-- **Supabase** (PostgreSQL) for data storage
-- **pgvector** extension for vector similarity search
-- **Docker** for containerized development
-- **Git** for version control
+- Supabase (PostgreSQL) with pgvector for vector search
+- Docker for containerized development
 
-### Data & ML
-- **CounselChat Dataset** (~3,000 mental health conversations)
-- **Pre-trained Transformers** (BERT/RoBERTa) for classification
-- **Vector Embeddings** for semantic similarity
-- **Evidence-based Categories** using MULTI-30 framework
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
-- **Node.js** 18+ (for frontend)
-- **Python** 3.11+ (for backend)
-- **Git** (for version control)
-- **Supabase Account** (for database)
-- **OpenAI API Key** (for LLM integration)
+- Node.js 18+
+- Python 3.11+
+- Supabase account
+- OpenAI API key
 
-### 1. Clone & Setup
+### Setup
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/your-username/cura.git
 cd cura
 
-# Setup development environment
-./scripts/setup-env.sh development
+# Backend setup
+cd backend
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+
+# Frontend setup
+cd ../frontend
+npm install
 ```
 
-### 2. Configure Credentials
-Add your credentials to `.env` and `backend/.env`:
+### Configuration
+Create `.env` files with your credentials:
 ```bash
-# Required credentials
+# .env (root)
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_KEY=your-anon-key
 OPENAI_API_KEY=sk-your-openai-key
 ```
 
-### 3. Run the Application
-
-**Option A: Local Development**
+### Run Application
 ```bash
-# Start backend (in one terminal)
+# Backend (Terminal 1)
 cd backend
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-python main.py
+source venv/bin/activate
+python -m uvicorn main:app --host 127.0.0.1 --port 8000
 
-# Start frontend (in another terminal)
+# Frontend (Terminal 2)
 cd frontend
-npm install
 npm start
 ```
 
-**Option B: Docker Development**
-```bash
-# Start all services
-./docker-dev.sh up
+### Access
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
 
-# Or manually
-docker compose up
-```
-
-### 4. Access the Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
-
-## 📚 Documentation
-
-### Environment Setup
-- [📖 Environment Configuration Guide](./docs/ENVIRONMENT_SETUP.md) - Comprehensive setup instructions
-- [⚙️ Configuration Reference](./docs/ENVIRONMENT_SETUP.md#environment-variables-reference) - All available settings
-
-### API Documentation
-- **Interactive Docs**: http://localhost:8000/docs (when running)
-- **ReDoc**: http://localhost:8000/redoc (alternative format)
-
-### Development
-- [🔧 Development Workflow](#development-workflow) - Common tasks and commands
-- [🧪 Testing](#testing) - Running tests and coverage
-- [🐳 Docker Usage](#docker-usage) - Container development
-
-## 🧪 Testing
-
-### Run Tests
-```bash
-# Backend tests
-cd backend
-pytest
-
-# Frontend tests  
-cd frontend
-npm test
-
-# Run all tests with coverage
-./scripts/test-all.sh  # (to be created)
-```
-
-### Test Coverage
-- **Backend**: Unit tests for services, API routes, and database operations
-- **Frontend**: Component tests and integration tests
-- **E2E**: End-to-end testing of the complete three-layer pipeline
-
-## 🐳 Docker Usage
-
-### Development Environment
-```bash
-# Start development environment
-./docker-dev.sh up
-
-# View logs
-./docker-dev.sh logs
-
-# Stop services
-./docker-dev.sh down
-
-# Rebuild containers
-./docker-dev.sh build
-
-# Access backend shell
-./docker-dev.sh shell
-```
-
-### Services
-- **Frontend**: http://localhost:3000
-- **Backend**: http://localhost:8000  
-- **Database**: PostgreSQL on port 5432
-- **Adminer**: http://localhost:8080 (database management UI)
-
-## 🔧 Development Workflow
-
-### Common Tasks
-```bash
-# Check environment configuration
-./scripts/setup-env.sh check
-
-# Start local development
-cd backend && source venv/bin/activate && python main.py
-cd frontend && npm start
-
-# Add new dependencies
-cd backend && pip install package-name && pip freeze > requirements.txt
-cd frontend && npm install package-name
-
-# Run linting and formatting
-cd backend && black . && flake8
-cd frontend && npm run lint
-
-# Database operations
-cd backend && python database/init_db.py
-```
-
-### Git Workflow
-```bash
-# Create feature branch
-git checkout -b feature/your-feature-name
-
-# Make changes and commit
-git add .
-git commit -m "feat: description of changes"
-
-# Push and create pull request
-git push origin feature/your-feature-name
-```
-
-## 📁 Project Structure
-
+## Project Structure
 ```
 cura/
-├── 📁 frontend/                 # React TypeScript frontend
-│   ├── 📁 src/
-│   │   ├── 📁 components/       # React components
-│   │   ├── 📁 services/         # API services
-│   │   ├── 📁 config/           # Frontend configuration
-│   │   └── 📁 types/            # TypeScript definitions
-│   ├── 📄 package.json
-│   └── 📄 tailwind.config.js
-├── 📁 backend/                  # FastAPI Python backend
-│   ├── 📁 api/                  # API routes and endpoints
-│   ├── 📁 services/             # Business logic services
-│   ├── 📁 database/             # Database models and connections
-│   ├── 📁 models/               # ML models and training
-│   ├── 📄 main.py              # FastAPI application entry
-│   ├── 📄 config.py            # Configuration management
-│   └── 📄 requirements.txt     # Python dependencies
-├── 📁 config/                   # Environment configurations
-├── 📁 scripts/                  # Automation scripts
-├── 📁 docs/                     # Documentation
-├── 📁 data/                     # Dataset and processed data
-├── 📄 docker-compose.yml       # Container orchestration
-├── 📄 .gitignore               # Git ignore rules
-└── 📄 README.md                # This file
+├── frontend/          # React TypeScript frontend
+├── backend/           # FastAPI Python backend
+├── config/            # Environment configurations
+├── scripts/           # Automation scripts
+├── docs/              # Documentation
+└── data/              # Dataset and processed data
 ```
 
-## 🚀 Deployment
+## Therapeutic Intervention Categories
 
-### Production Deployment
+Based on evidence-based therapeutic frameworks:
+1. Validation & Empathy
+2. Cognitive Restructuring
+3. Behavioral Activation
+4. Mindfulness/Grounding
+5. Problem-Solving
+6. Psychoeducation
 
-1. **Setup Production Environment**
-   ```bash
-   ./scripts/setup-env.sh production
-   ```
+## License
 
-2. **Configure Production Settings**
-   - Set strong `SECRET_KEY`
-   - Configure production Supabase project
-   - Set up monitoring (Sentry)
-   - Configure CORS for your domain
-
-3. **Deploy Options**
-   - **Vercel** (Frontend) + **Railway/Render** (Backend)
-   - **Docker** containers on cloud providers
-   - **Traditional** server deployment
-
-### Environment Variables for Production
-See [production configuration template](./config/production.env.template) for complete setup.
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our contributing guidelines:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Setup
-1. Follow the [Quick Start](#quick-start) guide
-2. Read the [Development Workflow](#development-workflow)
-3. Check existing issues and discussions
-
-## 📊 Project Status
-
-### Current Implementation (v1.0)
-- ✅ **Infrastructure**: React + FastAPI + Supabase setup complete
-- ✅ **Environment Management**: Comprehensive configuration system
-- ✅ **Docker Development**: Containerized development environment
-- 🔄 **Data Pipeline**: In progress (Task 2.0)
-- ⏳ **ML Model**: Planned (Task 3.0)
-- ⏳ **API Development**: Planned (Task 4.0)
-- ⏳ **Frontend UI**: Planned (Task 5.0)
-- ⏳ **Integration**: Planned (Task 6.0)
-
-### Roadmap
-- **Phase 1**: Data processing and ML model training
-- **Phase 2**: API development and integration
-- **Phase 3**: Frontend implementation and testing
-- **Phase 4**: Performance optimization and deployment
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-### Getting Help
-- **Documentation**: Check our [comprehensive guides](./docs/)
-- **Environment Issues**: Run `./scripts/setup-env.sh check`
-- **API Issues**: Visit http://localhost:8000/docs for interactive API testing
-- **General Questions**: Create an issue on GitHub
-
-### Common Issues
-- **Database Connection**: Verify Supabase credentials in `.env`
-- **OpenAI API**: Check API key format and quotas
-- **CORS Errors**: Ensure frontend URL is in `CORS_ORIGINS`
-- **Port Conflicts**: Check if ports 3000/8000 are available
-
-## 🙏 Acknowledgments
-
-- **CounselChat Dataset** - For providing real counseling conversation data
-- **MULTI-30 Framework** - For evidence-based therapeutic intervention categories
-- **Open Source Community** - For the amazing tools and libraries that make this possible
+MIT License - see LICENSE file for details.
 
 ---
 
-**Built with ❤️ for mental health professionals**
-
 *Cura is designed to augment, not replace, professional clinical judgment. Always prioritize your clinical expertise and ethical guidelines.*
+
+## System Architecture: Mental Model
+
+To understand how Cura works end-to-end, here's a visual representation of the complete system:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              CURA SYSTEM                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+USER INPUT: "Patient is struggling with work stress and anxiety"
+     │
+     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           FRONTEND (React + TypeScript)                   │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
+│  │   PatientInput  │  │  Loading States │  │  Three-Layer Response UI    │ │
+│  │     Form        │  │   & Progress    │  │  ┌─────────────────────────┐ │ │
+│  └─────────────────┘  └─────────────────┘  │  │ 1. Similar Cases        │ │ │
+│           │                    │           │  │ 2. ML Predictions       │ │ │
+│           ▼                    ▼           │  │ 3. LLM Advice           │ │ │
+└───────────┼────────────────────┼───────────┘  └─────────────────────────┘ │
+            │                    │
+            ▼                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        BACKEND (FastAPI + Python)                         │
+│  ┌─────────────────────────────────────────────────────────────────────────┐ │
+│  │                    /therapeutic-inference                              │ │
+│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────┐ │ │
+│  │  │   Input         │  │   Parallel      │  │   Response              │ │ │
+│  │  │  Validation     │  │   Processing    │  │   Synthesis             │ │ │
+│  │  │  (Pydantic)     │  │   (async)       │  │   (JSON)                │ │ │
+│  │  └─────────────────┘  └─────────────────┘  └─────────────────────────┘ │ │
+│  └─────────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    THREE-LAYER AI PROCESSING                              │
+│                                                                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
+│  │   LAYER 1:      │  │   LAYER 2:      │  │   LAYER 3:                 │ │
+│  │   SEMANTIC      │  │   ML CLASSIFI-   │  │   LLM GENERATION           │ │
+│  │   SEARCH        │  │   CATION        │  │                             │ │
+│  │                 │  │                 │  │  ┌─────────────────────────┐ │ │
+│  │ • Sentence      │  │ • Zero-shot     │  │  │ • OpenAI GPT-3.5-turbo  │ │ │
+│  │   Embeddings    │  │   BART-MNLI     │  │  │ • Context Integration   │ │ │
+│  │ • pgvector      │  │ • Multi-label   │  │  │ • Structured Output     │ │ │
+│  │ • Similarity    │  │ • Confidence    │  │  │ • Safety Filters        │ │ │
+│  │   Search        │  │   Thresholding  │  │  └─────────────────────────┘ │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘ │
+│           │                    │                    │                      │
+│           ▼                    ▼                    ▼                      │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
+│  │   Output:       │  │   Output:       │  │   Output:                  │ │
+│  │   • 3 Similar   │  │   • Intervention│  │   • Therapeutic Advice     │ │
+│  │     Cases       │  │     Categories  │  │   • Techniques List        │ │
+│  │   • Similarity  │  │   • Confidence  │  │   • Considerations         │ │
+│  │     Scores      │  │     Scores      │  │   • Next Steps             │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           DATABASE (Supabase)                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
+│  │   conversations │  │conversation_    │  │conversation_                │ │
+│  │   table         │  │embeddings       │  │classifications              │ │
+│  │                 │  │table            │  │table                        │ │
+│  │ • patient_text  │  │                 │  │                             │ │
+│  │ • counselor_    │  │ • patient_embed │  │ • intervention_type         │ │
+│  │   response      │  │ • counselor_    │  │ • confidence_score          │ │
+│  │ • metadata      │  │   embed         │  │ • model_version             │ │
+│  │                 │  │ • combined_     │  │                             │ │
+│  │                 │  │   embed         │  │                             │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        ML/AI COMPONENTS                                   │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
+│  │   Sentence      │  │   Zero-shot     │  │   OpenAI API                │ │
+│  │   Transformers  │  │   Classifier     │  │   Integration               │ │
+│  │                 │  │                 │  │                             │ │
+│  │ • all-MiniLM-   │  │ • facebook/     │  │ • GPT-3.5-turbo            │ │
+│  │   L6-v2         │  │   bart-large-   │  │ • Custom Prompts            │ │
+│  │ • 384-dim       │  │   mnli          │  │ • Safety Filters            │ │
+│  │ • Triple        │  │ • Multi-label   │  │ • Error Handling            │ │
+│  │   Embeddings    │  │ • Confidence    │  │                             │ │
+│  │                 │  │   Calibration   │  │                             │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+DATA FLOW:
+1. User enters patient scenario → Frontend validates and sends to Backend
+2. Backend processes in parallel: Semantic Search + ML Classification
+3. Results are combined and sent to LLM for advice generation
+4. All three layers are returned to Frontend for display
+5. Database stores conversations, embeddings, and classifications for future use
+
+KEY DESIGN PRINCIPLES:
+• Transparency: Users see evidence (similar cases) and reasoning (ML predictions)
+• Safety: Multiple layers of validation and fallback mechanisms
+• Performance: Async processing and vector indexing for sub-second search
+• Scalability: Modular architecture allows independent scaling of components
+```
+
+---
+
