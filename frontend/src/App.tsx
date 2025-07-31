@@ -142,20 +142,20 @@ const MainApp: React.FC = () => {
 
           <div className="relative">
             <h2 className="text-6xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tight leading-tight" style={{ fontFamily: 'Butler, serif' }}>
-              <span className="inline-block animate-sophisticated-fade-in bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent" style={{ animationDelay: '0.2s' }}>
-                Cura
+              <span className="inline-block bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent" style={{ animationDelay: '0.2s' }}>
+                Cura,
               </span>
               <br />
-              <span className="inline-block animate-sophisticated-fade-in text-slate-800" style={{ animationDelay: '0.6s' }}>
+              <span className="inline-block text-slate-800" style={{ animationDelay: '0.6s' }}>
                 Therapeutic Intelligence
               </span>
             </h2>
 
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal animate-sophisticated-fade-in mb-12" style={{ animationDelay: '1s' }}>
-              Advanced AI-powered insights to support clinical decision-making and enhance therapeutic outcomes.
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal mb-12" style={{ animationDelay: '1s' }}>
+              Advanced insights to support clinical decision-making and enhance therapeutic outcomes.
             </p>
 
-            <div className="flex justify-center space-x-8 text-sm animate-sophisticated-fade-in" style={{ animationDelay: '1.2s' }}>
+            <div className="flex justify-center space-x-8 text-sm" style={{ animationDelay: '1.2s' }}>
               <div className="px-4 py-2 bg-slate-100/60 backdrop-blur-sm rounded-lg text-slate-700 border border-slate-200/40">
                 <span className="font-semibold">Evidence-Based</span> Insights
               </div>
@@ -237,7 +237,7 @@ const MainApp: React.FC = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center mb-8 animate-sophisticated-fade-in">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-red-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -36,78 +36,8 @@ const EnhancedResultsComponent: React.FC<EnhancedResultsComponentProps> = ({ the
 
   return (
     <div className="space-y-8">
-      {/* Performance Metrics */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/40 animate-sophisticated-fade-in">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-2">
-              {therapeuticResponse.processing_time_ms.toFixed(0)}ms
-            </div>
-            <div className="text-sm text-slate-600 tracking-wide">Processing Time</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-2">
-              {similar_examples.length}
-            </div>
-            <div className="text-sm text-slate-600 tracking-wide">Similar Cases</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-2">
-              {primary_interventions.length}
-            </div>
-            <div className="text-sm text-slate-600 tracking-wide">Primary Interventions</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-2">
-              {llm_advice ? '✓' : '✗'}
-            </div>
-            <div className="text-sm text-slate-600 tracking-wide">AI Guidance</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Similar Cases Section */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/40 animate-sophisticated-fade-in" style={{ animationDelay: '0.1s' }}>
-        <div className="flex items-center mb-6">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-slate-900 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Similar Cases</h3>
-            <p className="text-sm text-slate-600 font-normal">{similar_examples.length} cases found via semantic search</p>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {similar_examples.map((example, index) => (
-            <div key={index} className="bg-slate-50/60 rounded-xl p-6 border border-slate-200/40">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs text-slate-500 font-normal">Case ID: {example.conversation_id}</span>
-                <div className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getSimilarityColor(example.similarity_score)}`}>
-                  {(example.similarity_score * 100).toFixed(0)}% Match
-                </div>
-              </div>
-              
-              <div className="space-y-3">
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900 mb-2 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Patient Question:</h4>
-                  <p className="text-sm text-slate-700 font-normal leading-relaxed">{example.patient_question}</p>
-                </div>
-                
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900 mb-2 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Counselor Response:</h4>
-                  <p className="text-sm text-slate-700 font-normal leading-relaxed">{example.counselor_response}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Combined ML Insights & AI Guidance */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/40 animate-sophisticated-fade-in" style={{ animationDelay: '0.2s' }}>
+      <div className="mt-12 bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/40 animate-sophisticated-fade-in" style={{ animationDelay: '0.2s' }}>
         <div className="flex items-center mb-8">
           <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-4">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,6 +152,46 @@ const EnhancedResultsComponent: React.FC<EnhancedResultsComponentProps> = ({ the
             )}
           </div>
         )}
+      </div>
+
+      {/* Similar Cases Section */}
+      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/40 animate-sophisticated-fade-in" style={{ animationDelay: '0.1s' }}>
+        <div className="flex items-center mb-6">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-slate-900 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Similar Cases</h3>
+            <p className="text-sm text-slate-600 font-normal">{similar_examples.length} cases found via semantic search</p>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {similar_examples.map((example, index) => (
+            <div key={index} className="bg-slate-50/60 rounded-xl p-6 border border-slate-200/40">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs text-slate-500 font-normal">Case ID: {example.conversation_id}</span>
+                <div className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getSimilarityColor(example.similarity_score)}`}>
+                  {(example.similarity_score * 100).toFixed(0)}% Match
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900 mb-2 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Patient Question:</h4>
+                  <p className="text-sm text-slate-700 font-normal leading-relaxed">{example.patient_question}</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900 mb-2 tracking-wide" style={{ fontFamily: 'Butler, serif' }}>Counselor Response:</h4>
+                  <p className="text-sm text-slate-700 font-normal leading-relaxed">{example.counselor_response}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Summary Footer */}

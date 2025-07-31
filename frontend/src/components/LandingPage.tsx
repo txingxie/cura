@@ -49,7 +49,7 @@ const LandingPage: React.FC = () => {
           <div className="relative">
             <h2 className="text-6xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tight leading-tight" style={{ fontFamily: 'Butler, serif' }}>
               <span className="inline-block animate-sophisticated-fade-in bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent" style={{ animationDelay: '0.2s' }}>
-                Cura
+                Cura,
               </span>
               <br />
               <span className="inline-block animate-sophisticated-fade-in text-slate-800" style={{ animationDelay: '0.6s' }}>
@@ -86,7 +86,7 @@ const LandingPage: React.FC = () => {
         </div>
 
         {/* Features Section */}
-        <div className="grid md:grid-cols-3 gap-4 mb-30">
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
           <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/40 animate-sophisticated-fade-in" style={{ animationDelay: '1.6s' }}>
             <div className="w-12 h-12 bg-gradient-to-br from-slate-900 to-slate-700 rounded-lg flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

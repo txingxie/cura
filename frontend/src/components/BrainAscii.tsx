@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const brainAscii = String.raw`                                               =::---:-:+=-=
                                   -::--::::--++=::...::--:::-=-.:-==
@@ -22,7 +22,7 @@ const brainAscii = String.raw`                                               =::
  ***=--+*==---++--=+=-=+==++==+#+=======+*+-::----:::::--===-----==+*****++**##*+==---:-=*+===+++=+*
  +==+=-=+*+===++===*+--==-=*#***%%%*=--:-=+=:::-=+=-==++****########+--::::--+===++=====+=-==##*+++*
 *+==++=-=+*+==++=-=+#*=====+*##***#+--==---:::--=**+=-:::::::-====-::::::::-=-:::-=*****+====+++++++
-#******+=+++-:----=+#%%#**###*=-::-=-:-==--=++-::-::::---=--:::----==--::--+=::--=++++###****+=+*++*
+#******+=+++-:----=+#%%#**###*=-::-=-:-==--=++-::-::::---=--:::----==--::--+=::--=++++###****+=**++*
 %%%%*+==--=+*+===+#%####%%*--++==-:-=--=++++-::::---::::-==-::-+*++-::::--+=-:--+++=--==+++++===+=+*
   %####*+++*#%%%%%%####%@*-::-:-::---==+*+=--=-----------==--:-=++=--:---==----=++=--==++===+==++++*
   #%%%%%%%@@%%%%%%%%%@@%+=-:==:---=+*+=::---==+++*****++*#+=---=+++=-----=--:-=+*=====+*+==+*##**+*
@@ -41,14 +41,35 @@ const brainAscii = String.raw`                                               =::
                                                 %%##%%%@@@@@@@@%%%%%%%%%%%%%%%%%%%@@
                                                  @%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@
                                                   @@@@@@@@@@@@    @@@@@@@@@@@@
-                                                       @@@@@@
-`;
+                                                       @@@@@@`;
 
 const BrainAscii: React.FC = () => {
+  const [signalLine, setSignalLine] = useState(0);
+  const brainLines = brainAscii.split('\n');
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSignalLine(prev => (prev + 1) % brainLines.length);
+    }, 100);
+    return () => clearInterval(timer);
+  }, [brainLines.length]);
+
+  const signalChars = ['-', '=', '≈', '='];
+  const animatedLines = brainLines.map((line, index) => {
+    if (index === signalLine) {
+      let newLine = '';
+      for (let i = 0; i < line.length; i++) {
+        newLine += line[i] === ' ' ? ' ' : signalChars[i % signalChars.length];
+      }
+      return newLine;
+    }
+    return line;
+  });
+
   return (
     <div className="flex justify-center">
       <pre className="text-left font-mono text-[5px] md:text-[7px] lg:text-[10px] leading-tight text-gray-500">
-        {brainAscii}
+        {animatedLines.join('\n')}
       </pre>
     </div>
   );
