@@ -70,7 +70,7 @@ const PatientInputForm: React.FC<PatientInputFormProps> = ({ onSubmit, isLoading
             
             {/* Focus Effect */}
             {isFocused && (
-              <div className="absolute inset-0 border-2 border-slate-500 rounded-xl animate-slow-pulse opacity-20 pointer-events-none"></div>
+              <div className="absolute inset-0 border-2 border-slate-500 rounded-xl opacity-20 pointer-events-none"></div>
             )}
             
             <div className="absolute bottom-4 right-4 text-xs text-slate-400 transition-all duration-300">
