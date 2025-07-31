@@ -5,7 +5,7 @@
 /* Custom Font Imports */
 @font-face {
   font-family: 'Butler';
-  src: url('/fonts/Butler.woff2') format('woff2');
+  src: url('./assets/fonts/Butler.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Aeonik';
-  src: url('/fonts/Aeonik-Regular.woff2') format('woff2');
+  src: url('./assets/fonts/Aeonik-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
+  background-color: #e8e0da;
+  background-image: linear-gradient(
+    -45deg,
+    #e8e0da 0%,
+    #f4f0ec 25%,
+    #e8e0da 50%,
+    #f4f0ec 75%,
+    #e8e0da 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 15s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 code {
@@ -81,11 +103,9 @@ code {
 @keyframes sophisticated-fade-in {
   0% {
     opacity: 0;
-    transform: translateY(20px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -476,74 +496,4 @@ code {
   }
 }
 
-/* New Background Animations */
-@keyframes floating-shapes {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.1;
-  }
-  25% {
-    transform: translateY(-20px) rotate(90deg);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateY(-40px) rotate(180deg);
-    opacity: 0.3;
-  }
-  75% {
-    transform: translateY(-20px) rotate(270deg);
-    opacity: 0.2;
-  }
-}
 
-.animate-floating-shapes {
-  animation: floating-shapes 8s ease-in-out infinite;
-}
-
-@keyframes gradient-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient-flow {
-  background-size: 200% 200%;
-  animation: gradient-flow 10s ease infinite;
-}
-
-@keyframes subtle-breathe {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.05;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.1;
-  }
-}
-
-.animate-subtle-breathe {
-  animation: subtle-breathe 6s ease-in-out infinite;
-}
-
-@keyframes gentle-float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  33% {
-    transform: translateY(-10px) translateX(5px);
-  }
-  66% {
-    transform: translateY(-5px) translateX(-3px);
-  }
-}
-
-.animate-gentle-float {
-  animation: gentle-float 12s ease-in-out infinite;
-}
