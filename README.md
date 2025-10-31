@@ -1,6 +1,6 @@
-# Cura - AI-Powered Therapeutic Guidance Platform
+# Cura - Therapeutic Guidance Platform
 
-A proof-of-concept web application that provides mental health counselors with AI-powered therapeutic guidance through a three-layer intelligent response system.
+Web application that provides mental health counselors with AI-powered therapeutic guidance through a three-layer intelligent response system.
 
 ## Overview
 
